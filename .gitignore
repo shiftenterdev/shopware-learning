@@ -1,0 +1,7 @@
+.idea
+src/.env
+src/vendor
+src/var
+src/install.lock
+src/PLATFORM_COMMIT_SHA
+src/public/theme
