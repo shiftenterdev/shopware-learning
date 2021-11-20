@@ -16,6 +16,7 @@ services:
     #      - "9999:9999" # watch storefront
     environment:
       - XDEBUG_ENABLED=1
+      #- PHP_VERSION=7.2
     networks:
       - web
 
