@@ -1,6 +1,6 @@
 {
   "name": "swag/plugin-skeleton",
-  "description": "Skeleton plugin",
+  "description": "SED Test plugin",
   "type": "shopware-platform-plugin",
   "license": "MIT",
   "autoload": {
@@ -11,8 +11,8 @@
   "extra": {
     "shopware-plugin-class": "SedTestPlugin\\SedTestPlugin",
     "label": {
-      "de-DE": "Skeleton plugin",
-      "en-GB": "Skeleton plugin"
+      "de-DE": "SED Test plugin",
+      "en-GB": "SED Test plugin"
     }
   }
 }
