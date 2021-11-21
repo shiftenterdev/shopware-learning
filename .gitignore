@@ -5,3 +5,5 @@ src/var
 src/install.lock
 src/PLATFORM_COMMIT_SHA
 src/public/theme
+src/public/sitemap
+src/public/thumbnail

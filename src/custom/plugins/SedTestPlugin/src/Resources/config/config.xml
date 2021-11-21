@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>English Title</title>
+        <title lang="de-DE">German Titel</title>
+        <input-field type="text">
+            <name>textField</name>
+            <label>Test field with default value</label>
+            <defaultValue>test</defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>email</name>
+            <label>Email address</label>
+            <disabled>true</disabled>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>mailMethod</name>
+            <label>Mail send method</label>
+            <options>
+                <option>
+                    <id>smtp</id>
+                    <name>SMTP</name>
+                    <name lang="de-DE">SMTP</name>
+                </option>
+                <option>
+                    <id>pop3</id>
+                    <name>POP3</name>
+                    <name lang="de-DE">POP3</name>
+                </option>
+            </options>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>exampleProduct</name>
+            <entity>product</entity>
+            <label>Choose a product for the plugin configuration</label>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>exampleMultiProductIds</name>
+            <entity>product</entity>
+            <label>Choose multiple products IDs for the plugin configuration</label>
+        </component>
+
+        <component name="sw-media-field">
+            <name>pluginMedia</name>
+            <label>Upload media or choose one from the media manager</label>
+        </component>
+
+        <component name="sw-text-editor">
+            <name>textEditor</name>
+            <label>Write some nice text with WYSIWYG editor</label>
+        </component>
+
+
+    </card>
+
+    <card>
+        <title>Advanced Configuration</title>
+        <title lang="de-DE">Erweiterte Einstellungen</title>
+        <input-field type="password">
+            <name>secret</name>
+            <label>Secret token</label>
+            <label lang="de-DE">Geheimschlüssel</label>
+            <helpText>Your secret token for xyz...</helpText>
+            <helpText lang="de-DE">Dein geheimer Schlüssel für xyz...</helpText>
+        </input-field>
+    </card>
+</config>
