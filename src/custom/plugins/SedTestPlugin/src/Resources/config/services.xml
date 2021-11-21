@@ -5,6 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
+        <!--    Custom cli command    -->
+        <service id="SedTestPlugin\Command\TestCommand">
+            <tag name="console.command"/>
+        </service>
     </services>
 </container>
