@@ -3,42 +3,19 @@ version: "3"
 services:
 
   shopware:
-    image: dockware/play:latest
+    image: dockware/dev:latest
     container_name: shopware
-    volumes:
+    volumes: # First time this volumes node will commented
       - "./src:/var/www/html"
     ports:
-      - "80:80"     # apache2
-    #      - "22:22"     # ssh
-    #      - "443:443"   # apache2 https
-    #      - "8888:8888" # watch admin
-    #      - "9998:9998" # watch storefront proxy
-    #      - "9999:9999" # watch storefront
-    environment:
-      - XDEBUG_ENABLED=1
-      #- PHP_VERSION=7.2
-    networks:
-      - web
-
-  db:
-    image: mariadb:10.6
-    container_name: mysql
-    networks:
-      - web
-    environment:
-      - MYSQL_ROOT_PASSWORD=hidden
-      - MYSQL_USER=shopuser
-      - MYSQL_PASSWORD=secret
-      - MYSQL_DATABASE=shopware
-
-  redis:
-    image: redis:5.0-alpine
-    container_name: redis
+      - "80:80"
+      - "2200:22"
+      - "3306:3306"
     networks:
       - web
 
   elasticsearch:
-    image: elastic/elasticsearch:7.8.0
+    image: elasticsearch:7.8.0
     container_name: elasticsearch
     networks:
       - web
@@ -46,16 +23,12 @@ services:
       - "EA_JAVA_OPTS=-Xms512m -Xms512m"
       - discovery.type=single-node
 
-## ***********************************************************************
-##  PERSISTENT DOCKER VOLUMES
-## ***********************************************************************
-#volumes:
-#  shopware_cache:
-#    driver: local
+  redis:
+    image: redis:5.0.6
+    container_name: redis
+    networks:
+      - web
 
-## ***********************************************************************
-##  NETWORKS
-## ***********************************************************************
 networks:
   web:
     external: false
