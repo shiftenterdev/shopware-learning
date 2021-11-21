@@ -3,6 +3,15 @@
   "description": "SED Test plugin",
   "type": "shopware-platform-plugin",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Iftakharul Alam",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "shopware/core": "6.1.*"
+  },
   "autoload": {
     "psr-4": {
       "SedTestPlugin\\": "src/"
