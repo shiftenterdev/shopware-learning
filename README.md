@@ -1,5 +1,16 @@
 # Shopware Learning
 
+## Using Dockware
+### Dockware version
+
+|Image | Description | Basis|
+|---|---|---|
+|dockware #play|Launch Shopware in just a couple of seconds locally on your system. Test every functionality and play around while verifying your requirements.|Production|
+|dockware #dev|This is the solution for instant coding. Run Shopware 6, prepare your IDE and immediately start with your own customizations and plugins. Provides Xdebug, watchers or more.|Production|
+|dockware #contribute|This image supports Shopware 6 modification, basically to contribute to the official Shopware 6 Github platform. Contains all dev tools and the already installed demo data.|developement|
+|dockware #essentials|This is a plain dockware environment without Shopware.|---|
+|dockware #flex|This one provides a flexible Apache and PHP container for all kinds of Symfony and Shopware projects. It's an image meant for for individualization, e.g. you can manage the Shopware version on your own.|---|
+
 ## Installation
 ### Using Dockware(M1 architecture compatible)
 ```shell
@@ -98,6 +109,27 @@ SHOPWARE_ES_HOSTS=elasticsearch:9200
 SHOPWARE_ES_ENABLED=1
 SHOPWARE_ES_INDEXING_ENABLED=1
 SHOPWARE_ES_INDEX_PREFIX=abc
+```
+
+### Redis
+
+To enable redis in Shopware we need following node in `docker-compose.yml` file.
+
+```
+redis:
+  image: redis:5.0.6
+  container_name: redis
+  networks:
+    - web
+```
+
+And in the `.env` file
+
+```
+REDIS_SESSION_HOST=redis
+REDIS_SESSION_PORT=6379
+REDIS_CACHE_HOST=redis
+REDIS_CACHE_PORT=6379
 ```
 
 #### Default Credentials
