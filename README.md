@@ -47,8 +47,8 @@ services:
       image: dockware/dev:latest
       container_name: shopware
       ports:
-         - "80:80"
-         - "3306:3306"
+         - "8001:80"
+         - "3307:3306"
          - "22:22"
          - "8888:8888"
          - "9999:9999"
@@ -73,6 +73,8 @@ networks:
   web:
     external: false
 ```
+
+> To update the port please up it `.env` file also and after restart the container.
 
 #### Elastic search
 
