@@ -1,7 +1,7 @@
 # Shopware Learning
 
 ## Installation
-### Using Dockware(M1 architecture compatible)
+### Using Dockware(ARM(Apple M1/M2) architecture compatible)
 ```shell
 $ git clone git@github.com:shiftenterdev/shopware-learning.git
 $ cd shopware-learning
@@ -12,12 +12,13 @@ For volume mapping - After first run we need to uncomment volume node in `shopwa
 ```shell
 ...
 container_name: shopware
-volumes: # First time this volumes node will commented
-  - "./src:/var/www/html"
+#volumes:
+#  - "./src:/var/www/html"
 ports:
   - "80:80"
 ...
 ```
+> Uncomment volume node after first run
 
 And copy file from source container to host
 ```shell
