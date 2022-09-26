@@ -5,8 +5,8 @@ services:
   shopware:
     image: dockware/dev:latest
     container_name: shopware
-    volumes: # First time this volumes node will commented
-      - "./src:/var/www/html"
+#    volumes:
+#      - "./src:/var/www/html"
     ports:
       - "80:80"
       - "2200:22"
