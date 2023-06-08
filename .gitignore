@@ -7,3 +7,11 @@ src/PLATFORM_COMMIT_SHA
 src/public/theme
 src/public/sitemap
 src/public/thumbnail
+src/symfony.lock
+src/docker-compose.override.yml
+src/docker-compose.yml
+src/config/packages
+src/config/services.yaml
+src/.gitignore
+src/custom/static-plugins/.gitignore
+src/bin/functions.sh
