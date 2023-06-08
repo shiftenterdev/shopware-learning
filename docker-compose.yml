@@ -1,34 +1,88 @@
-version: "3"
+version: '3'
 
 services:
-
   shopware:
-    image: dockware/dev:latest
     container_name: shopware
-    volumes: # First time this volumes node will commented
-      - "./src:/var/www/html"
+    user: 'root'
+    image: dockware/dev:6.5.1.1
     ports:
-      - "80:80"
-      - "2200:22"
-      - "3306:3306"
+      - "22:22"     # ssh
+      - "443:443"
+      - "80:80"     # apache2
+      - "8888:8888" # watch admin
+      - "9998:9998" # watch storefront proxy (not needed if you start with "make watch-storefront")
+      - "9999:9999" # watch storefront
+      - "3306:3306" # mysql
+    volumes: ###  MAKE SURE YOU BOOT THE FIRST TIME WITHOUT THIS VOLUME, OTHERWISE IT WILL OVERRIDE THE FOLDER AND NO FILES WILL EXIST, READ THE readme.md ###
+      - "db_data:/var/lib/mysql"
+      - "./src:/var/www/html"
+    networks:
+      - web
+    #    depends_on:
+    #      - opensearch
+    environment:
+      - SHOP_DOMAIN=shopware.local
+      - XDEBUG_ENABLED=1
+      - PHP_VERSION=8.1
+      - SSH_USER=shopware
+      - SSH_PWD=password
+      - SW_CURRENCY=EUR
+
+  mailcatcher:
+    container_name: mailcatcher
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
     networks:
       - web
 
-  elasticsearch:
-    image: elasticsearch:7.8.0
-    container_name: elasticsearch
-    networks:
-      - web
-    environment:
-      - "EA_JAVA_OPTS=-Xms512m -Xms512m"
-      - discovery.type=single-node
+  #  elasticsearch:
+  #    image: elasticsearch:8.7.1
+  #    container_name: elasticsearch
+  #    ports:
+  #      - "9200:9200"
+  #      - "9300:9300"
+  #    networks:
+  #      - web
+  #    environment:
+  #      - "EA_JAVA_OPTS=-Xms512m -Xms512m"
+  #      - xpack.security.enabled=false
+  #      - discovery.type=single-node
 
   redis:
-    image: redis:5.0.6
-    container_name: redis
+    image: redis:6.0
+    ports:
+      - "6379:6379"
     networks:
       - web
+    volumes:
+      - redis_data:/data
 
+#  opensearch:
+#    container_name: opensearch
+#    image: opensearchproject/opensearch:2
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#    networks:
+#      - web
+#    volumes:
+#      - opensearch_data:/usr/share/opensearch/data
+#    environment:
+#      - discovery.type=single-node
+#      - plugins.security.disabled=true
+
+## ***********************************************************************
+##  PERSISTENT DOCKER VOLUMES
+## ***********************************************************************
+volumes:
+  db_data:
+  redis_data:
+#  opensearch_data:
+
+## ***********************************************************************
+##  NETWORKS
+## ***********************************************************************
 networks:
   web:
     external: false
