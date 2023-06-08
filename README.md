@@ -1,15 +1,6 @@
 # Shopware Learning
 
-## Using Dockware
-### Dockware version
-
-|Image | Description | Basis|
-|---|---|---|
-|dockware #play|Launch Shopware in just a couple of seconds locally on your system. Test every functionality and play around while verifying your requirements.|Production|
-|dockware #dev|This is the solution for instant coding. Run Shopware 6, prepare your IDE and immediately start with your own customizations and plugins. Provides Xdebug, watchers or more.|Production|
-|dockware #contribute|This image supports Shopware 6 modification, basically to contribute to the official Shopware 6 Github platform. Contains all dev tools and the already installed demo data.|developement|
-|dockware #essentials|This is a plain dockware environment without Shopware.|---|
-|dockware #flex|This one provides a flexible Apache and PHP container for all kinds of Symfony and Shopware projects. It's an image meant for for individualization, e.g. you can manage the Shopware version on your own.|---|
+> Shopware repo based on dockware
 
 ## Installation
 ### Using Dockware(M1 architecture compatible)
